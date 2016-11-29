@@ -1,0 +1,65 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class StaticObstacleGrid : IGridObject {
+
+	public static int DEFAULT_OBSTACLE_LAYER = 14;
+
+	public StaticObstacleData data;
+
+	public StaticObstacleGrid(StaticObstacleData tdata) {
+		this.data = tdata;
+	}
+
+	/**
+	 * Current position of the building
+	 */
+	virtual public GridPosition Position {
+		get {
+			return data.position;
+		}
+		set {
+			data.position = value;
+		}
+	}
+	
+	/**
+	 * Current position of the building
+	 */
+	virtual public GridHeight Height {
+		get{return new GridHeight(0);}
+		set{}
+	}
+	/*
+	 * New position of the object on the grid measured from the bottom left corner.
+	 * Used when the obejct is being placed
+	 */ 
+	public GridPosition NewPosition {
+		get{return new GridPosition(0,0);}
+		set{}
+	}
+	
+	/*
+	 * Shape of the grid object defined by offsets from the base position of 0,0.
+	 */
+	public List<GridPosition> Shape {
+		get{return new List<GridPosition>{new GridPosition(0,0)};}
+	}
+	
+	/*
+	 * Get rid of this object and any attached game objects, etc.
+	 */ 
+	public void Dispose(){
+		
+	}
+	
+}
+
+public enum ObstacleType {
+	NONE,
+	DEFAULT,
+	FORBUILDING,
+	FORCHARACTER
+};
+

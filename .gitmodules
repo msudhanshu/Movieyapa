@@ -1,0 +1,8 @@
+[submodule "Assets/CommonGameScript"]
+	path = Assets/CommonGameScript
+	url = https://github.com/msudhanshu/CommonGameScript.git
+	branch = master
+[submodule "Assets/vsg-unity"]
+	path = Assets/vsg-unity
+	url = https://github.com/msudhanshu/vsg-unity.git
+	branch = master
