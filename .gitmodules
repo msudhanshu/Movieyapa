@@ -3,6 +3,6 @@
 	url = https://github.com/msudhanshu/CommonGameScript.git
 	branch = master
 [submodule "Assets/vsg-unity"]
-	path = Assets/vsg-unity
-	url = https://github.com/msudhanshu/vsg-unity.git
+	path = Assets/sg-unity
+	url = https://github.com/msudhanshu/sg-unity.git
 	branch = master
