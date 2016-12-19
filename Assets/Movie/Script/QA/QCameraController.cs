@@ -35,21 +35,21 @@ public class QCameraController : Manager<QCameraController> {
         main3dmenuCamera.gameObject.SetActive(false);
     }
 
-    public void SetQCamera(QuestionType qType) 
+    public void SetQCamera(AssetType qType) 
     {
         main3dmenuCamera.gameObject.SetActive(false);
         switch(qType) {
-            case QuestionType.IMAGE:
+            case AssetType.IMAGE:
                  gifCamera.gameObject.SetActive(false);
                  musicCamera.gameObject.SetActive(false);
                  imageCamera.gameObject.SetActive(true);
                 break;
-            case QuestionType.GIF:
+            case AssetType.GIF:
                     musicCamera.gameObject.SetActive(false);
                      imageCamera.gameObject.SetActive(false);
                      gifCamera.gameObject.SetActive(true);
                  break;
-            case QuestionType.MUSIC:
+            case AssetType.MUSIC:
                 gifCamera.gameObject.SetActive(false);
                 imageCamera.gameObject.SetActive(false);
                  musicCamera.gameObject.SetActive(true);

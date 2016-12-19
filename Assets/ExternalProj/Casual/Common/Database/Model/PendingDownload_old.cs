@@ -4,14 +4,14 @@ using System.Collections;
 using KiwiCommonDatabase;
 using SimpleSQL;
 
-public class PendingDownload: BaseDbModel
+public class PendingDownload_old: BaseDbModel
 {
 
-		public PendingDownload ()
+	public PendingDownload_old ()
 		{
 
 		}
-		public PendingDownload (string bundleName, int priority, int status)
+	public PendingDownload_old (string bundleName, int priority, int status)
 		{
 				this.bundleName = bundleName;
 				this.priority = priority;

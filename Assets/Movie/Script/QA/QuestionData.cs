@@ -35,20 +35,20 @@ public class QuestionData : BaseDbModel
 	public List<string> answers {get; set;}
 	public List<string> options {get; set;}
 
-	public QuestionType questionType {
+	public AssetType questionType {
 		get{
 			switch(questType) {
 			case "image":
-				return QuestionType.IMAGE;
+				return AssetType.IMAGE;
 				break;
 			case "music":
-				return QuestionType.MUSIC;
+				return AssetType.MUSIC;
 				break;
             case "gif":
-                return QuestionType.GIF;
+                return AssetType.GIF;
                 break;
 			default:
-				return QuestionType.IMAGE;
+				return AssetType.IMAGE;
 			}
 		}
 	}

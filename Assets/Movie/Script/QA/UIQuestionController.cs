@@ -29,7 +29,7 @@ public class UIQuestionController : UIGamePanel {
 
     private void SetQuestion() {
         qCameraController.SetQCamera(questionData.questionAsset.questionType);
-        if(questionData.questionAsset.questionType == QuestionType.TEXT) {
+        if(questionData.questionAsset.questionType == AssetType.TEXT) {
             qTextFrame.gameObject.SetActive(true);
             qText.text = questionData.questionAsset.assetUrl;
         } else 

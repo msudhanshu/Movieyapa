@@ -49,25 +49,7 @@ public class QuestionModel : BaseDbModel
 }
 
 
-public enum QuestionType {
-    IMAGE,
-    MUSIC,
-    GIF,
-    TEXT,
-    SPRITE,
-    DEFAULT
-}
-
-public enum CdnType {
-    UNKNOWN,
-    RESOURCE,
-    APK,
-    SDCARD,
-    SERVER,
-    CDN
-}
-
-public class QuestionAsset //: BaseDbModel 
+public class QuestionAsset : IAssetRequest //: BaseDbModel 
 {
   //  [PrimaryKey]
   //  public string _id {get; set;}
@@ -88,7 +70,7 @@ public class QuestionAsset //: BaseDbModel
 
     private void ParseFrameCount() {
         if(isInit) return;
-        if(questionType == QuestionType.SPRITE) {
+        if(questionType == AssetType.SPRITE) {
             try{
             String[] s = frameCount.Split('x');
             tgifSpriteColumn = Int32.Parse(s[0]);
@@ -105,7 +87,7 @@ public class QuestionAsset //: BaseDbModel
 
     public bool isGifSprite {
         get {
-            return questionType==QuestionType.SPRITE;
+            return questionType==AssetType.SPRITE;
         }
     }
 
@@ -130,26 +112,26 @@ public class QuestionAsset //: BaseDbModel
         }
     }
 
-    public QuestionType questionType {
+    public AssetType questionType {
         get{
             switch(mime) {
             case "image":
-                return QuestionType.IMAGE;
+                return AssetType.IMAGE;
                 break;
             case "music":
-                return QuestionType.MUSIC;
+                return AssetType.MUSIC;
                 break;
             case "gif":
-                return QuestionType.GIF;
+                return AssetType.GIF;
                 break;
             case "sprite":
-                return QuestionType.SPRITE;
+                return AssetType.SPRITE;
                 break;
             case "text":
-                return QuestionType.TEXT;
+                return AssetType.TEXT;
                 break;
             default:
-                return QuestionType.IMAGE;
+                return AssetType.IMAGE;
             }
         }
     }
@@ -177,6 +159,24 @@ public class QuestionAsset //: BaseDbModel
             }
         }
     }
+
+
+	public string getAssetUrl (){
+		return assetUrl;
+	}
+	public CdnType getCdnType(){
+		return cdnType;
+	}
+	public int getGifFrameCount() {
+		return gifFrameCount;
+	}
+	public bool getIsGifSprite() {
+		return isGifSprite;
+	}
+	public AssetType getAssetType () {
+		return questionType;
+	}
+		
 }
 
 public class QAnswerModel //: BaseDbModel 

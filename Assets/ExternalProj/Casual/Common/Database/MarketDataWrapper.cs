@@ -9,7 +9,7 @@ using KiwiCommonDatabase;
 public class MarketDataWrapper {
 
 
-	public List<LevelSceneData> levelSceneData;
+	//public List<LevelSceneData> levelSceneData;
 
 	public int version;
 
@@ -24,7 +24,7 @@ public class MarketDataWrapper {
 
 	public void InsertIntoDatabase() {
 		DatabaseManager dbManager = DatabaseManager.GetInstance();
-		dbManager.InsertMarketTable<LevelSceneData>(levelSceneData);
+		//dbManager.InsertMarketTable<LevelSceneData>(levelSceneData);
 		dbManager.UpdateMarketVersion (version);
 	}
 

@@ -21,25 +21,25 @@ public class QFrameController : MonoBehaviour {
 
     public void SetQFrame(QuestionModel questionData)
     {
-        QuestionType  qType =  questionData.questionAsset.questionType;
+        AssetType  qType =  questionData.questionAsset.questionType;
         SetQFrameActive(qType);
         switch(qType) {
-            case QuestionType.IMAGE:
+            case AssetType.IMAGE:
                  imageFrame.SetFrame(questionData);
                 break;
-            case QuestionType.GIF:
+            case AssetType.GIF:
                  gifFrame.SetFrame(questionData);
                  break;
-            case QuestionType.SPRITE:
+            case AssetType.SPRITE:
                 spriteGifFrame.SetFrame(questionData);
                 break;
-            case QuestionType.MUSIC:
+            case AssetType.MUSIC:
                 musicFrame.SetFrame(questionData);
                 break;
         }
     }
 
-    public void SetQFrameActive(QuestionType qType)
+    public void SetQFrameActive(AssetType qType)
     {
         spriteGifFrame.gameObject.SetActive(false);
         gifFrame.gameObject.SetActive(false);
@@ -47,16 +47,16 @@ public class QFrameController : MonoBehaviour {
         imageFrame.gameObject.SetActive(false);
 
         switch(qType) {
-        case QuestionType.IMAGE:
+        case AssetType.IMAGE:
             imageFrame.gameObject.SetActive(true);
             break;
-        case QuestionType.GIF:
+        case AssetType.GIF:
             gifFrame.gameObject.SetActive(true);
             break;
-        case QuestionType.SPRITE:
+        case AssetType.SPRITE:
             spriteGifFrame.gameObject.SetActive(true);
             break;
-        case QuestionType.MUSIC:
+        case AssetType.MUSIC:
             musicFrame.gameObject.SetActive(true);
             break;
         }
