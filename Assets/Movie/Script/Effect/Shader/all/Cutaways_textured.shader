@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Cutaways_textured" {
    Properties {
@@ -41,7 +43,7 @@ Shader "Cutaways_textured" {
          {
             vertexOutput output;
  
-            output.pos =  mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos =  UnityObjectToClipPos(input.vertex);
             // mul(UNITY_MATRIX_MVP,input.vertex); 
             // mul(_Object2World,input.vertex); 
             //1. input.vertex

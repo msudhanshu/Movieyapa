@@ -1,4 +1,6 @@
-﻿Shader "Custom/C3E4_twisting2" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/C3E4_twisting2" {
 	Properties
 	{
 		twisting ("twisting", Float) = 0.5
@@ -36,7 +38,7 @@
 				//o.pos[1] = pos[1]; 
 				pos[1] = pos[1];
 				pos[3] = 1;
-				o.pos = mul (UNITY_MATRIX_MVP, pos);
+				o.pos = UnityObjectToClipPos (pos);
 				o.color = _color;
 				return o;
  

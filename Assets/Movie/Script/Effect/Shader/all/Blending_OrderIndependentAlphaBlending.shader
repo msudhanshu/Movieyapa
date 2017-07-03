@@ -1,4 +1,6 @@
-﻿//1. Additive : example for additive blending are double exposures ,
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//1. Additive : example for additive blending are double exposures ,
 				// Blend SrcAlpha One
 //2. Multiplicative : An example for multiplicative blending in photography is the use of multiple uniform grey filters: the order in which the filters are put onto a camera doesn't matter for the resulting attenuation of the image. In terms of the rasterization of triangles, the image corresponds to the contents of the framebuffer before the triangles are rasterized, while the filters correspond to the triangles.
 				//Blend Zero SrcAlpha 
@@ -26,7 +28,7 @@ Shader "Blending_OrderIndependentAlphaBlending" {
  
          float4 vert(float4 vertexPos : POSITION) : SV_POSITION 
          {
-            return mul(UNITY_MATRIX_MVP, vertexPos);
+            return UnityObjectToClipPos(vertexPos);
          }
  
          float4 frag(void) : COLOR 
@@ -50,7 +52,7 @@ Shader "Blending_OrderIndependentAlphaBlending" {
  
          float4 vert(float4 vertexPos : POSITION) : SV_POSITION 
          {
-            return mul(UNITY_MATRIX_MVP, vertexPos);
+            return UnityObjectToClipPos(vertexPos);
          }
  
          float4 frag(void) : COLOR 

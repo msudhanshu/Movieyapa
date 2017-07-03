@@ -1,4 +1,6 @@
-﻿Shader "MyShader/Effect/GaussianBlur" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/Effect/GaussianBlur" {
 	Properties
 	{
 		_MainTex ("MainTexture", 2D) = "white" { }
@@ -62,7 +64,7 @@
 
 			fragmentInput vert(vertexInput i){
 				fragmentInput o;
-				o.position = mul (UNITY_MATRIX_MVP, i.vertex);
+				o.position = UnityObjectToClipPos (i.vertex);
 				//float2 uv = MultiplyUV( UNITY_MATRIX_TEXTURE0, v.texcoord );
 				o.texcoord0 = TRANSFORM_TEX ( i.texcoord0 , _MainTex);
 				return o;

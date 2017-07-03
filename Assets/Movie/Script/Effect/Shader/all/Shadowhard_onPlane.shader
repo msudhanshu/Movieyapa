@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 #warning Upgrade NOTE: unity_Scale shader variable was removed; replaced 'unity_Scale.w' with '1.0'
@@ -23,7 +25,7 @@ Shader "Shadowhard_onPlane" {
  
          float4 vert(float4 vertexPos : POSITION) : SV_POSITION 
          {
-            return mul(UNITY_MATRIX_MVP, vertexPos);
+            return UnityObjectToClipPos(vertexPos);
          }
  
          float4 frag(void) : COLOR

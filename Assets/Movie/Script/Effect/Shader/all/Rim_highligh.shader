@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "Rim_Highlight" {
@@ -61,7 +63,7 @@ Shader "Rim_Highlight" {
 			output.newOpacity = min( 1- dot(normalize(viewDir), normalize(normal) ), 1);
             //  	output.newOpacity = min(1.0, _alpha / pow( abs(dot(normalize(viewDir), normalize(normal) )), _thickness) );
                 
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             output.texCoord = TRANSFORM_TEX (input.texCoord, _MainTex);
            
             return output;

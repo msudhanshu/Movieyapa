@@ -1,4 +1,6 @@
-﻿Shader "MyShader/TexturedColor" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/TexturedColor" {
 Properties {
     _Color ("Main Color", Color) = (1,1,1,0.5)
     _MainTex ("Texture", 2D) = "white" { }
@@ -26,7 +28,7 @@ SubShader {
 		v2f vert (appdata_base v)
 		{
 		    v2f o;
-		    o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+		    o.pos = UnityObjectToClipPos (v.vertex);
 		    
 		    //From unityCG.cginc : Transforms 2D UV by scale/bias property
 			//  #define TRANSFORM_TEX(tex,name) (tex.xy * name##_ST.xy + name##_ST.zw)

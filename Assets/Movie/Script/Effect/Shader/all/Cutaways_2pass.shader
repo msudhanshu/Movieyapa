@@ -1,4 +1,6 @@
-﻿Shader "Cutaways_2pass" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Cutaways_2pass" {
    SubShader {
  
       // first pass (is executed before the second pass)
@@ -22,7 +24,7 @@
          {
             vertexOutput output;
  
-            output.pos =  mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos =  UnityObjectToClipPos(input.vertex);
             output.posInObjectCoords = input.vertex; 
  
             return output;
@@ -61,7 +63,7 @@
          {
             vertexOutput output;
  
-            output.pos =  mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos =  UnityObjectToClipPos(input.vertex);
             output.posInObjectCoords = input.vertex; 
  
             return output;

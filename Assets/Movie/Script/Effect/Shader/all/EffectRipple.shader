@@ -1,4 +1,6 @@
-﻿Shader "MyShader/Effect/Ripple" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/Effect/Ripple" {
    Properties {
         _Ambient("Ambient Color",Color) = (0.3,0.3,0.3,1)
         _MainTex ("RGBA Texture Image", 2D) = "white" {} 
@@ -46,7 +48,7 @@
             //output.tex = input.texcoord.xy;
             output.tex  = TRANSFORM_TEX (input.texcoord, _MainTex);
             
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

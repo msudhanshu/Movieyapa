@@ -1,4 +1,6 @@
-﻿Shader "MetaballShader" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MetaballShader" {
     Properties {
         _MainTex ("Diffuse (RGB) Gloss (A)", 2D) = "white" {}
     }
@@ -42,7 +44,7 @@
             float4 p = v.vertex;
             p.xyz += getDeform(p);
             v.vertex = p;
-            o.pos = mul (UNITY_MATRIX_MVP, p);
+            o.pos = UnityObjectToClipPos (p);
             o.normal = v.vertex;
             v.normal = v.vertex;
         }

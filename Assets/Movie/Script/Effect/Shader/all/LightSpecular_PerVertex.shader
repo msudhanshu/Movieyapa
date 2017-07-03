@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Custom/LightSpecular_PerVertex" {
@@ -33,7 +35,7 @@ Shader "Custom/LightSpecular_PerVertex" {
            v2f vert (appdata_base ab) {
                v2f o;
     
-               o.position = mul(UNITY_MATRIX_MVP,ab.vertex);
+               o.position = UnityObjectToClipPos(ab.vertex);
                o.uv_MainTex = TRANSFORM_TEX(ab.texcoord.xy , _MainTex);
     
     			//add ambient light

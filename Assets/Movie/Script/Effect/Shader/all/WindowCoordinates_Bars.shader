@@ -1,4 +1,6 @@
-﻿Shader "MyShader/WindowCoordinates/Bars" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/WindowCoordinates/Bars" {
 	Properties
 	{
 		barcount ("BarCount", Float) = 10
@@ -20,7 +22,7 @@
 			
 			vertOut vert(appdata_base v) {
 				vertOut o;
-				o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos (v.vertex);
 				
 				//ComputeScreenPos : Function define in the UnityCG.cginc file, 
 				//this functions return the screen position for the fragment shader. 

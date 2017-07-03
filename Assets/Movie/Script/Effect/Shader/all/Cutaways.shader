@@ -1,4 +1,6 @@
-﻿Shader "Cutaways" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Cutaways" {
    SubShader {
       Pass {
          Cull Off // turn off triangle culling, alternatives are:
@@ -22,7 +24,7 @@
          {
             vertexOutput output;
  
-            output.pos =  mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos =  UnityObjectToClipPos(input.vertex);
             // mul(UNITY_MATRIX_MVP,input.vertex); 
             // mul(_Object2World,input.vertex); 
             output.posInObjectCoords = input.vertex; 

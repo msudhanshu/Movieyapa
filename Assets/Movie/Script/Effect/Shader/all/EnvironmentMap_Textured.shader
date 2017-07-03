@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "EnvironmentMap_Textured" {
@@ -47,7 +49,7 @@ Shader "EnvironmentMap_Textured" {
                - float4(_WorldSpaceCameraPos, 1.0));
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             
             output.uv = TRANSFORM_TEX(input.texcoord, _MainTex);
             return output;

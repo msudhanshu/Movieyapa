@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Projector' with 'unity_Projector'
 
 //http://en.wikibooks.org/wiki/Cg_Programming/Unity/Projectors
 Shader "Projector_AddLight" {
@@ -37,7 +39,7 @@ Shader "Projector_AddLight" {
             vertexOutput output;
  
             output.posProj = mul(unity_Projector, input.vertex);
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

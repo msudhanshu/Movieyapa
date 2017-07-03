@@ -1,4 +1,6 @@
-﻿Shader "MyShader/Effect/FishEye" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/Effect/FishEye" {
    Properties {
         _MainTex ("RGBA Texture Image", 2D) = "white" {} 
         _OverlayTex ("Overlay", 2D) = "white" {} 
@@ -44,7 +46,7 @@
             //output.tex = input.texcoord.xy;
             output.tex  = TRANSFORM_TEX (input.texcoord, _MainTex);
          //   output.overlayTex  = TRANSFORM_TEX (input.texcoord, _OverlayTex);
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

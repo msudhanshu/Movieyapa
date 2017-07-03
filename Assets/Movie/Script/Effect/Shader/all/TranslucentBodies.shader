@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 //Shader "TranslucentSurfaces" {
@@ -56,7 +58,7 @@ Shader "TranslucentBodies" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  
@@ -146,7 +148,7 @@ Shader "TranslucentBodies" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  
@@ -201,7 +203,7 @@ Shader "TranslucentBodies" {
  
          float4 vert(float4 vertexPos : POSITION) : SV_POSITION 
          {
-            return mul(UNITY_MATRIX_MVP, vertexPos);
+            return UnityObjectToClipPos(vertexPos);
          }
  
          float4 frag(void) : COLOR 
@@ -256,7 +258,7 @@ Shader "TranslucentBodies" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  
@@ -361,7 +363,7 @@ Shader "TranslucentBodies" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

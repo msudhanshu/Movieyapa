@@ -29,11 +29,11 @@ public class QuestionModel : BaseDbModel
         return ServerConfig.BASE_URL+questionAsset.assetUrl;
     }
 
-    public static QuestionModel GetQuestionData(string _id) {
-        QuestionModel q = KiwiCommonDatabase.DataHandler.wrapper.questions.Find(x => x._id.Equals(_id));
-        //return DatabaseManager.GetInstance ().GetDbHelper ().QueryObjectById<QuestionModel> (_id);
-        return q;
-    }
+//    public static QuestionModel GetQuestionData(string _id) {
+//        QuestionModel q = KiwiCommonDatabase.DataHandler.wrapper.questions.Find(x => x._id.Equals(_id));
+//        //return DatabaseManager.GetInstance ().GetDbHelper ().QueryObjectById<QuestionModel> (_id);
+//        return q;
+//    }
 
     static int i=-1;
     public static QuestionModel GetNextQuestionData() {
@@ -154,6 +154,9 @@ public class QuestionAsset : IAssetRequest //: BaseDbModel
             case "cdn":
                 return CdnType.CDN;
                 break;
+			case "fire":
+				return CdnType.FIREBASE_STORAGE;
+				break;
             default:
                 return CdnType.UNKNOWN;
             }

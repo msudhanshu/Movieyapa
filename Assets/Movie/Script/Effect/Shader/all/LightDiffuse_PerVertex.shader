@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/LightDiffuse_PerVertex" {
       Properties {
         _MainTex ("Texture 1", 2D) = "white" {}
@@ -25,7 +27,7 @@ Shader "Custom/LightDiffuse_PerVertex" {
            v2f vert (appdata_base ab) {
                v2f o;
     
-               o.position = mul(UNITY_MATRIX_MVP,ab.vertex);
+               o.position = UnityObjectToClipPos(ab.vertex);
                o.uv_MainTex = TRANSFORM_TEX(ab.texcoord.xy , _MainTex);
     
                // per vertex light calc

@@ -1,4 +1,6 @@
-﻿Shader "MyShader/WindowCoordinates/CirclesMask" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/WindowCoordinates/CirclesMask" {
 	Properties {
 		_CirclesX ("Circles in X", Float) = 20
 		_CirclesY ("Circles in Y", Float) = 10
@@ -20,7 +22,7 @@
 			uniform float _Fade;
 
 			float4 vert(appdata_base v) : POSITION {
-				return mul (UNITY_MATRIX_MVP, v.vertex);
+				return UnityObjectToClipPos (v.vertex);
 			}
 
 			float4 frag(float4 sp:WPOS) : COLOR {

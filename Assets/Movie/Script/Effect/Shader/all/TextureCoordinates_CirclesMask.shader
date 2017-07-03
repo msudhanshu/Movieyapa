@@ -1,4 +1,6 @@
-﻿Shader "MyShader/TextureCoordinates/CirclesMask" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/TextureCoordinates/CirclesMask" {
 	Properties {
 		_CirclesX ("Circles in X", Float) = 20
 		_CirclesY ("Circles in Y", Float) = 10
@@ -28,7 +30,7 @@
 
 			fragmentInput vert(vertexInput i){
 				fragmentInput o;
-				o.position = mul (UNITY_MATRIX_MVP, i.vertex);
+				o.position = UnityObjectToClipPos (i.vertex);
 				o.texcoord0 = i.texcoord0;
 				return o;
 			}

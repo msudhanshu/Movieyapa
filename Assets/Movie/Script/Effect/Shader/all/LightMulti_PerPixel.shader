@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
@@ -49,7 +51,7 @@ Shader "LightMulti_PerPixel" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
  
             // Diffuse reflection by four "vertex lights"            
             output.vertexLighting = float3(0.0, 0.0, 0.0);
@@ -173,7 +175,7 @@ Shader "LightMulti_PerPixel" {
             output.posWorld = mul(modelMatrix, input.vertex);
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

@@ -56,8 +56,10 @@ namespace SgUnity {
         // this call reply should have qeffect embeden in it. if server then json should have that
 
         public void GenerateNextCarrierQuestion(int level, int currentQuestionIndex) {
-            //SgUnity.ServerAction.takeAction(ActionEnum.GETNEXTQUESTION,new GetQuestionCallback());
-            //generate next question id
+			SgUnity.ServerAction.takeAction(ActionEnum.GET_NEXT_QUESTION,new GetQuestionCallback());
+			return;
+			/*
+			//generate next question id
             try{
                 List<QuestionModel> allqs = KiwiCommonDatabase.DataHandler.wrapper.questions;
                 QuestionModel nextQuestion = allqs[(int)UnityEngine.Random.Range (0, allqs.Count)];
@@ -72,16 +74,17 @@ namespace SgUnity {
             } catch (Exception e) {
                 SgUnity.ServerAction.takeAction(ActionEnum.GET_NEXT_QUESTION,new GetQuestionCallback());
             }
+			*/
         }
 
         public void GenerateNextQuestionById(string question_id) {
             GenerateNextQuestionById(CapitalManager.GetInstance().Level,question_id);
         }
         public void GenerateNextQuestionById(int level, string question_id, int currentQuestionIndex=0) {
-            QuestionModel q = QuestionModel.GetQuestionData(question_id);
-            if(q!=null)
-                SetQuestionToUI(q);
-            else 
+//            QuestionModel q = QuestionModel.GetQuestionData(question_id);
+//            if(q!=null)
+//                SetQuestionToUI(q);
+//            else 
                 SgUnity.ServerAction.GetQuestionByIdAction(ActionEnum.GET_QUESTION_BY_ID, question_id, new GetQuestionCallback());
         }
 

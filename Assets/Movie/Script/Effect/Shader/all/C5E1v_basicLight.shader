@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: commented out 'float4x4 _Object2World', a built-in variable
 // Upgrade NOTE: commented out 'float4x4 _World2Object', a built-in variable
 
@@ -65,7 +67,7 @@
 			
 			{
 			
-			  oPosition = mul(UNITY_MATRIX_MVP, position);
+			  oPosition = UnityObjectToClipPos(position);
 			
 			
 			

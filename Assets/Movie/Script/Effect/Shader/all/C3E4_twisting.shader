@@ -1,4 +1,6 @@
-﻿Shader "Custom/C3E4_twisting" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/C3E4_twisting" {
 	Properties
 	{
 		twisting ("twisting", Float) = 0.5
@@ -24,7 +26,7 @@
 			{
 				v2f o;
 				//method 1
-				pos = mul (UNITY_MATRIX_MVP, pos);
+				pos = UnityObjectToClipPos (pos);
 				float angle = twisting * length(pos);
 				float cosLength, sinLength;
 				sincos(angle, sinLength, cosLength);

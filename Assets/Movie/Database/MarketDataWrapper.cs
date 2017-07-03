@@ -12,7 +12,7 @@ namespace KiwiCommonDatabase
 	public class MarketDataWrapper : ISGDataWrapper {
 
 		public List<LevelSceneData> levelSceneData;
-    	public List<QuestionModel> questions;
+    	//public List<QuestionModel> questions;
         public List<PackageModel> packages;
         public List<CurrencyModel> currencies;
         public List<GameParamModel> gameParams;
@@ -31,7 +31,7 @@ namespace KiwiCommonDatabase
 
 		public override void InsertIntoDatabase() {
     		DatabaseManager dbManager = DatabaseManager.GetInstance();
-            dbManager.InsertMarketTable<QuestionModel>(questions);
+            //dbManager.InsertMarketTable<QuestionModel>(questions);
             dbManager.InsertMarketTable<PackageModel>(packages);
     		dbManager.UpdateMarketVersion (version);
     	}

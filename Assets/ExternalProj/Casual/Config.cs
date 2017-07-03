@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public static class Config {
 	public static string USER_ID_KEY = "user_id";
 	public static int USER_ID = 7;
-
+	public static bool FIREBASE_SERVER = false;
 	public static string CURRENT_BOOST_ITEM = "current_boost_item";
 
 	public static string DEFAULT_CALLCOUT_ICON = "new_callout_default";

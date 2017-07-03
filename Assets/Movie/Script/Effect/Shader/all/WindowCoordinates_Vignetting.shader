@@ -1,4 +1,6 @@
-﻿Shader "MyShader/WindowCoordinates/Vignetting" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/WindowCoordinates/Vignetting" {
 	Properties
 	{
 		centerx ("CenterX", Range(0.0,1.0)) = 0.5
@@ -19,7 +21,7 @@
 			uniform float radius;
 			//uniform float2 center = float2(centerx,centery);
 			float4 vert(appdata_base v) : POSITION {
-				return mul (UNITY_MATRIX_MVP, v.vertex);
+				return UnityObjectToClipPos (v.vertex);
 			}
 
 			float4 frag(float4 sp:WPOS) : COLOR {

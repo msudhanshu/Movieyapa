@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Skybox" {
    Properties {
@@ -36,7 +38,7 @@ Shader "Skybox" {
             float4x4 modelMatrix = unity_ObjectToWorld;
             output.viewDir = float3(mul(modelMatrix, input.vertex) 
                - float4(_WorldSpaceCameraPos, 1.0));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

@@ -1,4 +1,6 @@
-﻿Shader "Custom/C2E1" 
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/C2E1" 
 {
 	//Refer here : http://unity3d.com/support/documentation/Components/SL-SubShader.html
 	SubShader 
@@ -23,7 +25,7 @@
 		C2E1v_Output C2E1v_green(float4 position : POSITION)
 		{
 		  C2E1v_Output OUT;
-		  OUT.position = mul(UNITY_MATRIX_MVP,position);//float4(position,0,1);
+		  OUT.position = UnityObjectToClipPos(position);//float4(position,0,1);
 		  OUT.color    = float4(0, 1, 0, 1);  // RGBA green
 		  return OUT;
 		}		

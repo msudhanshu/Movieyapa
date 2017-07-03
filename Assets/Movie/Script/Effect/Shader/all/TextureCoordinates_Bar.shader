@@ -1,4 +1,6 @@
-﻿Shader "MyShader/TextureCoordinates/Bar" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/TextureCoordinates/Bar" {
 	Properties
 	{
 		barcount ("BarCount", Float) = 10
@@ -26,7 +28,7 @@
 
 			fragmentInput vert(vertexInput i){
 				fragmentInput o;
-				o.position = mul (UNITY_MATRIX_MVP, i.vertex);
+				o.position = UnityObjectToClipPos (i.vertex);
 				o.texcoord0 = i.texcoord0;
 				return o;
 			}

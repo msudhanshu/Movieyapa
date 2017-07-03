@@ -1,4 +1,6 @@
-﻿//Note that the alpha test and the discard instruction are rather slow on some platforms, in particular on mobile devices. Thus, blending is often a more efficient alternative.
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//Note that the alpha test and the discard instruction are rather slow on some platforms, in particular on mobile devices. Thus, blending is often a more efficient alternative.
 Shader "Alpha_Discard" {
    Properties {
       _MainTex ("RGBA Texture Image", 2D) = "white" {} 
@@ -31,7 +33,7 @@ Shader "Alpha_Discard" {
             vertexOutput output;
  
             output.tex = input.texcoord;
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

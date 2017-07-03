@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "Bump_NormalMap" {
@@ -63,7 +65,7 @@ Shader "Bump_NormalMap" {
  
             output.posWorld = mul(modelMatrix, input.vertex);
             output.tex = input.texcoord;
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  
@@ -194,7 +196,7 @@ Shader "Bump_NormalMap" {
  
             output.posWorld = mul(modelMatrix, input.vertex);
             output.tex = input.texcoord;
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

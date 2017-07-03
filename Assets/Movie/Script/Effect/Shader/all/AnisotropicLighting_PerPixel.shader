@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 Shader "AnisotropicLighting_PerPixel" {
@@ -61,7 +63,7 @@ Shader "AnisotropicLighting_PerPixel" {
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
             output.tangentDir = normalize(float3(
                mul(modelMatrix, float4(float3(input.tangent), 0.0))));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  
@@ -180,7 +182,7 @@ Shader "AnisotropicLighting_PerPixel" {
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
             output.tangentDir = normalize(float3(
                mul(modelMatrix, float4(float3(input.tangent), 0.0))));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

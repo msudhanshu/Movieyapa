@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Reflection;
 using KiwiCommonDatabase;
-using Expansion;
 using SgUnity;
 namespace KiwiCommonDatabase
 {

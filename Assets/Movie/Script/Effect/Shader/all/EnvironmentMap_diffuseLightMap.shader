@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
 
 //http://en.wikibooks.org/wiki/Cg_Programming/Unity/Many_Light_Sources
 //Shader "Cg shader with image-based diffuse lighting" {
@@ -38,7 +40,7 @@ Shader "EnvironmentMap_diffuseLightMap" {
  
             output.normalDir = normalize(float3(
                mul(float4(input.normal, 0.0), modelMatrixInverse)));
-            output.pos = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.pos = UnityObjectToClipPos(input.vertex);
             return output;
          }
  

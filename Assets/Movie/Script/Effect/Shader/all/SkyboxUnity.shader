@@ -1,4 +1,6 @@
-﻿Shader "SkyboxUnity" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "SkyboxUnity" {
    Properties {
       _Cube ("Environment Map", Cube) = "white" {}
    }
@@ -30,7 +32,7 @@
          vertexOutput vert(vertexInput input)
          {
             vertexOutput output;
-            output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+            output.vertex = UnityObjectToClipPos(input.vertex);
             output.texcoord = input.texcoord;
             return output;
          }

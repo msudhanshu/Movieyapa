@@ -1,4 +1,6 @@
-﻿Shader "Custom/Effect DoubleVision"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Effect DoubleVision"
 {
 	Properties
 	{
@@ -34,7 +36,7 @@
 						uniform float2 _rightSeparation)
 			{
 				const float PI = 3.14159;
-				oPos = mul (UNITY_MATRIX_MVP, pos);
+				oPos = UnityObjectToClipPos (pos);
 				texCoord = TRANSFORM_TEX (texCoord, _MainTex);
 				leftTexCoord = texCoord + _leftSeparation * cos(fmod(_Time.x*_speed,PI)-PI/2);
 				rightTexCoord = texCoord + _rightSeparation * cos(fmod(_Time.x*_speed,PI)-PI/2);

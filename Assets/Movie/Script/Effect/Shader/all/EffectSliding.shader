@@ -1,4 +1,6 @@
-﻿Shader "MyShader/TextureCoordinates/Effect Sliding Color" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "MyShader/TextureCoordinates/Effect Sliding Color" {
 	Properties
 	{
 		_MainTex ("MainTexture", 2D) = "white" { }
@@ -31,7 +33,7 @@
 
 			fragmentInput vert(vertexInput i){
 				fragmentInput o;
-				o.position = mul (UNITY_MATRIX_MVP, i.vertex);
+				o.position = UnityObjectToClipPos (i.vertex);
 				o.texcoord0 = TRANSFORM_TEX ( i.texcoord0 , _MainTex);
 				return o;
 			}

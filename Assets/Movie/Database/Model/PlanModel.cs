@@ -93,10 +93,10 @@ public class PlanModel : BaseDbModel, ICapitalCurrency
  
     public static  Dictionary<ICapitalCurrency,int> ParseCurrency(String cur) {
         Dictionary<ICapitalCurrency,int> curmap = new Dictionary<ICapitalCurrency,int>();
-        String[] rewardvals = cur.Split(SgUnity.ServerConfig.LIST_DELIMETER);
+		String[] rewardvals = cur.Split(SgUnityConfig.ServerConfig.LIST_DELIMETER);
         for(int i=0; i< rewardvals.Length; i++) {
             try {
-                String[] s = rewardvals[i].Split(SgUnity.ServerConfig.MAP_KEY_VALUE_DELIMETER);
+				String[] s = rewardvals[i].Split(SgUnityConfig.ServerConfig.MAP_KEY_VALUE_DELIMETER);
                 CurrencyModel c =  CurrencyModel.GetCurrencyModel(s[0]);
                 if(c!=null)
                     curmap.Add(c,Int32.Parse(s[1]));

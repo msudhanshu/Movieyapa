@@ -1,4 +1,6 @@
-﻿//Note that the alpha test and the discard instruction are rather slow on some platforms, in particular on mobile devices. Thus, blending is often a more efficient alternative.
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//Note that the alpha test and the discard instruction are rather slow on some platforms, in particular on mobile devices. Thus, blending is often a more efficient alternative.
 Shader "Blending_Textured" {
 	Properties {
 	_MainTex ("Front Texture Image", 2D) = "white" {} 
@@ -34,7 +36,7 @@ Shader "Blending_Textured" {
          {
          	vertexOutput output;
          	output.tex = texcoord;
-         	output.pos = mul(UNITY_MATRIX_MVP, vertexPos);
+         	output.pos = UnityObjectToClipPos(vertexPos);
             return output;
          }
  
@@ -77,7 +79,7 @@ Shader "Blending_Textured" {
          {
          	vertexOutput output;
          	output.tex = texcoord;
-         	output.pos = mul(UNITY_MATRIX_MVP, vertexPos);
+         	output.pos = UnityObjectToClipPos(vertexPos);
             return output;
          }
  

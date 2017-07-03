@@ -22,6 +22,7 @@ there should be option to force no effect condition for some image .. as some mo
 // json will be on db/table , eg put it in server side only
 // but assets for now ,some, can be put with apk assets...
 // for package or so, we can download many images at once, as a zip/asset-bundle .. and put to sdcard..and then read from sdcard
+//image/assetbundles will be on firebase storage. Don’t know how to load asset-bundle using firebase sdk.
 
 four option, with mulitp correct may be
 two answer  type
@@ -37,7 +38,7 @@ but then will have to think how session ends..
 
 
 Effect:
-replace face with different actor.... extra reward question.. as such asset making  is tought
+replace face with different actor.... extra reward question.. as such asset making  is tough
 or put effects only on face.. or remove face with white background.... we can upload image with a binary mask, then shader can take care of rest
 unhide blocks.. as effect
 
@@ -69,6 +70,19 @@ rateapp popup, contact us/mail us for complainl,... make it easy for unhappy use
 add support address in itune
 on Fixing theror complain , reply with If you like the app, don’t hesitate to support us and leave a review on the App Store
 
+deep link : 
+in setting ‘share app’ button which will share a deep link to friends.
+Even a question a share button (saying ‘ask friends’). It will create deep link with that question with its image and share it.
+The receiver of this link will directly see this question… if he has not played to that level or not eligible (mostly it would be the case), user
+will just see this question and get bonus marks for it and then go back to home page of app.
+(or complete package itself, don’t know where to put share button for package?)
+
+Can insentive/reward  on the invites done.
+Trick like keep some feature (not important) locked and on share/invite it will get unlocked… keep it remote configurable as user may not like this.. 
+
+
+App indexing : to let ur app get searched in google search. To bring back old user also.
+
 
 lock a email address with app name, and support/feedback email with app name
 Don’t use push notifications, these should be for valuable data and not for you to beg for a good rating 😉
@@ -78,7 +92,7 @@ question asset name???? randomly genreted uid, but should be small , or should m
 
 Resource:
 ===========
-Level (
+Level with XP (
     for carrier only, but this will be considered as main game , so level is the unit to test success in the game
 )
 Gold (
@@ -177,7 +191,7 @@ Can buy hint , gold , ticket with sale price.
 Jam Popup:
 ==============
 When out of Hint or ticket, show user how to get that, 
-market popup redirect, tell him to come after one day to claim reward, redirect him to play pckage or game to earn resource
+market popup redirect, tell him to come after one day to claim reward, redirect him to play package or game to earn resource
 Put analytics/bi/AI to detect ,user is running out of some resource , and reward him that resource(like as luck give some tickets/hints), Sale accordingly
 
 Feature/liveOps/cmsable time to unlock :
