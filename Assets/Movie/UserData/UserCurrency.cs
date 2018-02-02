@@ -8,11 +8,10 @@ public class UserCurrency {
 //    public CurrencyModel currency {get; set;}
 //	public int quantity {get; set;}
 
-    public int level{get; set;}
-    public int gold{get; set;}
-    public int hint{get; set;}
-    public int ticket{get; set;}
-    public int xp{get; set;}
-
+	public int hint;// { get; set; }
+	public int level;// { get; set; }
+	public int silver;// { get; set; }
+	public int ticket;// { get; set; }
+	public int xp;// {get; set;}
 
 }

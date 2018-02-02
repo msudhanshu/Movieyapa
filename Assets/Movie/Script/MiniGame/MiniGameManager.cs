@@ -70,11 +70,11 @@ public class MiniGameManager : Manager<MiniGameManager> , IQuestionAnsweredCallb
         QuestionAnswerManager.GetInstance().ShowNextPackageQuestion(activeQuestionId);
     }
 
-    public void OnCorrectAnswer(){
+	public void OnCorrectAnswer(QuestionModel q){
         OnAnswering();
     }
 
-    public void OnWrongAnswer(){
+	public void OnWrongAnswer(QuestionModel q){
         OnAnswering();
     }
 

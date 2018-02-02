@@ -3,7 +3,7 @@ using SgUnity;
 
 namespace SgUnity {
     public interface IQuestionAnsweredCallback {
-	    void OnCorrectAnswer();
-        void OnWrongAnswer();
+		void OnCorrectAnswer(QuestionModel q);
+		void OnWrongAnswer(QuestionModel q);
     }
 }

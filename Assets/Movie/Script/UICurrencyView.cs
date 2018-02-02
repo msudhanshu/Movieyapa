@@ -12,12 +12,13 @@ public class UICurrencyView : MonoBehaviour {
 	public Text hintText;
 
 	public Text ticketText;
-    public Text xpText;
+    public Text silverText;
 
 	private int displayedLevel;
 	private int displayedGold;
 	private int displayedHint;
 	private int displayedTicket;
+	private int displayedSilver;
     private int displayedXp;
 
 	void Start() {
@@ -89,6 +90,10 @@ public class UICurrencyView : MonoBehaviour {
             StartCoroutine("DisplayGenericCurrencyTicket",resUpdate);
             //DisplayGenericCurrencyTicket(resUpdate);
             break;
+		case "silver" :
+			StopCoroutine("DisplayGenericCurrencySilver");
+			StartCoroutine("DisplayGenericCurrencySilver",resUpdate);
+			break;
         }
     }
 
@@ -108,7 +113,10 @@ public class UICurrencyView : MonoBehaviour {
         //StopCoroutine ("DisplayGenericCurrency");
         yield return StartCoroutine ("DisplayGenericCurrency", resUpdate);
     }
-        
+	private IEnumerator DisplayGenericCurrencySilver(CurrencyUpdate resUpdate) {
+		//StopCoroutine ("DisplayGenericCurrency");
+		yield return StartCoroutine ("DisplayGenericCurrency", resUpdate);
+	}      
 
 	private IEnumerator DisplayGenericCurrency(CurrencyUpdate resUpdate) {
 		ICapitalCurrency currency = resUpdate.currency;
@@ -131,8 +139,8 @@ public class UICurrencyView : MonoBehaviour {
             while( !UpdateGenericCurrency(ref displayedTicket, CapitalManager.GetInstance().Ticket, ref ticketText, instant))
 				yield return true;
             break;
-        case "xp" :
-            while( !UpdateGenericCurrency(ref displayedXp, CapitalManager.GetInstance().Xp, ref xpText, instant))
+        case "silver" :
+			while( !UpdateGenericCurrency(ref displayedSilver, CapitalManager.GetInstance().Silver, ref silverText, instant))
                 yield return true;
             break;
 		}

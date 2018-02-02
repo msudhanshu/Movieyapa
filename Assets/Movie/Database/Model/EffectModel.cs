@@ -38,8 +38,21 @@ public class EffectModel : BaseDbModel
     }
 
     public static EffectModel GetEffectModelById(string _id) {
-        EffectModel q = KiwiCommonDatabase.DataHandler.wrapper.effects.Find(x => Utility.StringEquals(x._id,_id));
+		EffectModel q;
+		#if UNITY_EDITOR
+		if (EffectTool.isDebug) {
+			 q = InitSelfNonDiffMarketTable().Find(x => Utility.StringEquals(x._id,_id));
+
+		} else {
+		 q = KiwiCommonDatabase.DataHandler.wrapper.effects.Find(x => Utility.StringEquals(x._id,_id));
         //return DatabaseManager.GetInstance ().GetDbHelper ().QueryObjectById<QuestionModel> (_id);
+		}
+		#else
+		 q = KiwiCommonDatabase.DataHandler.wrapper.effects.Find(x => Utility.StringEquals(x._id,_id));
+
+		#endif
+
+
         return q;
     }
 

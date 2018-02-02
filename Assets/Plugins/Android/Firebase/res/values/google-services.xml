@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="firebase_database_url" translatable="false">https://unityfirebasetest-5c0bc.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">937727920045</string>
+  <string name="google_storage_bucket" translatable="false">unityfirebasetest-5c0bc.appspot.com</string>
+  <string name="project_id" translatable="false">unityfirebasetest-5c0bc</string>
+  <string name="google_api_key" translatable="false">AIzaSyAQV1qdKO4Fd8ADJSNoBJXqIH1nN2hX6_o</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAQV1qdKO4Fd8ADJSNoBJXqIH1nN2hX6_o</string>
+  <string name="google_app_id" translatable="false">1:937727920045:android:f7156368f8542fd4</string>
+  <string name="default_web_client_id" translatable="false">937727920045-keolkbgmc6jitb0i5d0tm7hun1d9107e.apps.googleusercontent.com</string>
+</resources>

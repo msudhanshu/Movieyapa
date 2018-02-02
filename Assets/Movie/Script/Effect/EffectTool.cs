@@ -8,7 +8,7 @@ using UnityEditor;
 public class EffectTool : MonoBehaviour
 {
     public EffectEnum effectType;
-
+	public static bool isDebug = true;
     public void ReloadEffect() {
         Effect.CleanEffects(this.gameObject);
         IEffectData effectData = new QEffectModel(effectType);

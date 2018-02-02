@@ -10,29 +10,13 @@ using SimpleSQL;
 
 
 [Serializable]
-public class PlanModel : BaseDbModel, ICapitalCurrency
+public class PlanModel : BaseDbModel
 {
 	[PrimaryKey]
     public string id {get; set;}
     public string name{get; set;}
     public string description{get; set;}
 
-    public static string CURRENCY_LEVEL = "level";
-    public static string CURRENCY_TICKET = "ticket";
-    public static string CURRENCY_HINT = "hint";
-    public static string CURRENCY_GOLD = "gold";
-    public static string CURRENCY_XP = "xp";
-
-//    public static string RESOURCE_XP = "xp";
-//    public static string RESOURCE_HAPPINESS = "happiness";
-//    public static string RESOURCE_GOLD = "gold";
-//    public static string RESOURCE_SILVER = "silver";
-//    public static string RESOURCE_AXE = "axe";
-//    public static string RESOURCE_CHEER = "cheer";
-
-    /**
-     * Default Constructor
-     */
     public PlanModel() {
 
     }
@@ -88,7 +72,8 @@ public class PlanModel : BaseDbModel, ICapitalCurrency
 
     public static CurrencyModel GetCurrencyModel(String id) {
         //TODO DANGER
-        return KiwiCommonDatabase.DataHandler.wrapper.currencies.Find(x => x.id==id);
+        //return KiwiCommonDatabase.DataHandler.wrapper.currencies.Find(x => x.id==id);
+		return CurrencyModel.currencies.Find (x => x.id == id);
     }
  
     public static  Dictionary<ICapitalCurrency,int> ParseCurrency(String cur) {
@@ -105,16 +90,6 @@ public class PlanModel : BaseDbModel, ICapitalCurrency
             }
         }
         return curmap;
-    }
-
-    public static List<CurrencyModel> InitSelfNonDiffMarketTable() {
-        List<CurrencyModel> list = new List<CurrencyModel>();
-        list.Add(new CurrencyModel("gold","Gold","Gold"));
-        list.Add(new CurrencyModel("hint","Hint","Hint"));
-        list.Add(new CurrencyModel("ticket","Ticket","Ticket"));
-        list.Add(new CurrencyModel("level","Level","Level"));
-        list.Add(new CurrencyModel("xp","XP","XP"));
-        return list;
     }
 
 }

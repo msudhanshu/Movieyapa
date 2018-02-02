@@ -10,8 +10,22 @@ public enum EffectEnum  {
 	DEFAULT,
     [StringValue("GRAY")]
 	GRAY,
-    [StringValue("EDGE_DETECT")] //Shader("EffectEdgeDetect"), 
+	[StringValue("BLUR")] //Shader("EffectEdgeDetect"), 
+	BLUR,
+	[StringValue("CIRCLE_HOLE")] //Shader("EffectEdgeDetect"), 
+	CIRCLE_HOLE,
+	[StringValue("RIPPLES")] //Shader("EffectEdgeDetect"), 
+	RIPPLES,
+	[StringValue("SLIDE_STRIPE")] //Shader("EffectEdgeDetect"), 
+	SLIDE_STRIPE,
+	[StringValue("SLIDE_GRID")] //Shader("EffectEdgeDetect"), 
+	SLIDE_GRID,
+	[StringValue("EDGE_DETECT")] //Shader("EffectEdgeDetect"), 
 	EDGE_DETECT,
+	[StringValue("NEGATIVE")] //Shader("EffectEdgeDetect"), 
+	NEGATIVE,
+	[StringValue("BLACKNWHITE")] //Shader("EffectEdgeDetect"), 
+	BLACKNWHITE,
     [StringValue("DOUBLE_VISION")]
 	DOUBLE_VISION
 }

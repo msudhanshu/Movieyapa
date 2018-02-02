@@ -41,7 +41,7 @@ public class ResourceManager : Manager<ResourceManager>, IExpansionResource {
 	private Dictionary<IGameResource, Level> nextLevelMap;
 
 	private int GetResourceValue(string resType) {
-		return GetResourceValue(DatabaseManager.GetDbResource(resType));
+			return GetResourceValue (DatabaseManager.GetDbResource (resType));
 	}
 
 	private int GetResourceValue(IGameResource res) {
@@ -51,11 +51,11 @@ public class ResourceManager : Manager<ResourceManager>, IExpansionResource {
 	}
 
 	private void SetResourceValue(string resType, int quantity) {
-		DbResource resource = DatabaseManager.GetDbResource(resType);
+			DbResource resource = DatabaseManager.GetDbResource (resType);
 
-		if (!resources.ContainsKey (resource))
-			resources.Add (resource, 0);
-		resources[resource] = quantity;
+			if (!resources.ContainsKey (resource))
+				resources.Add (resource, 0);
+			resources [resource] = quantity;
 	}
 
 	public int GetCollectableValue(Collectable collectable){

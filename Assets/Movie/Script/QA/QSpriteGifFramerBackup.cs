@@ -6,22 +6,24 @@ using System;
 using SgUnity;
 
 [RequireComponent(typeof(AnimateTiledTexture))]
-public class QSpriteGifFramerBackup : QTextureFramer,IAssetLoadCallback<List<Texture2D>>,IAssetLoadCallback<Texture2D> {
+public class QSpriteGifFramerBackup : QTextureFramer, IAssetLoadCallback<List<Texture2D>>, IAssetLoadCallback<Texture2D>
+{
 
-    private UnityEngine.Object[] objects;  
+    private UnityEngine.Object[] objects;
     //private ImageSequenceTextureArray imagesSequencer;
     private AnimateTiledTexture spriteSequencer;
 
-    override public void Awake ()  
-    {  
+    override public void Awake()
+    {
         //imagesSequencer =  gameObject.GetComponent<ImageSequenceTextureArray>();
-        spriteSequencer =  gameObject.GetComponent<AnimateTiledTexture>();
+        spriteSequencer = gameObject.GetComponent<AnimateTiledTexture>();
         //this.imagesSequencer.textureInitialized = false;
         //Load all textures found on the Sequence folder, that is placed inside the resources folder  
-    }  
-      
+    }
 
-    override protected void SetQuestionAsset() {
+
+    override protected void SetQuestionAsset()
+    {
         //questionImage.texture = Resources.Load<Texture>( questionData.questionImage );
         //if(questionImage.texture==null)
 
@@ -34,19 +36,20 @@ public class QSpriteGifFramerBackup : QTextureFramer,IAssetLoadCallback<List<Tex
 
         //bool isSprite = questionData.questionAsset.isGifSprite;
 
-     //   if(isSprite) {
-            spriteSequencer.gameObject.SetActive(true);
-            //StartCoroutine(CoroutineLoadSpriteFromUrl());
-        QAssetDownloadManager.GetInstance().SetQuestionGifSprite(questionData.questionAsset,this);
-//        } else {
-//            imagesSequencer.gameObject.SetActive(true);
-//            //StartCoroutine(CoroutineImagesLoadFromUrl());
-//            QAssetDownloadManager.GetInstance().SetQuestionGif(questionData.questionAsset,this);
-//        }
+        //   if(isSprite) {
+        spriteSequencer.gameObject.SetActive(true);
+        //StartCoroutine(CoroutineLoadSpriteFromUrl());
+        QAssetDownloadManager.GetInstance().SetQuestionGifSprite(questionData.questionAsset, this);
+        //        } else {
+        //            imagesSequencer.gameObject.SetActive(true);
+        //            //StartCoroutine(CoroutineImagesLoadFromUrl());
+        //            QAssetDownloadManager.GetInstance().SetQuestionGif(questionData.questionAsset,this);
+        //        }
         //StartCoroutine(CoroutineLoadFromResources("gif1"));
     }
 
-    public void assetLoadSuccess(Texture2D asset) {
+    public void assetLoadSuccess(Texture2D asset)
+    {
         Debug.Log("Asset Load Successfull" + questionData.questionAsset.assetUrl);
         SetQuestionImage(asset);
         this.spriteSequencer._columns = questionData.questionAsset.gifSpriteColumn;
@@ -56,33 +59,35 @@ public class QSpriteGifFramerBackup : QTextureFramer,IAssetLoadCallback<List<Tex
         onLoadSuccess();
     }
 
-    public void assetLoadSuccess(List<Texture2D> asset) {
-//        Debug.Log("Asset Load Successfull" + questionData.questionAsset.assetUrl);
-//        int gifFrameSize =  asset.Count;
-//        this.imagesSequencer.textures = new Texture[gifFrameSize];  
-//        for(int i=0; i< asset.Count; i++)
-//        {  
-//            this.imagesSequencer.textures[i] = (Texture)asset[i];
-//        }
-//        SetQuestionImage(null);
-//        this.imagesSequencer.FPS = questionData.questionAsset.fps;
-//        this.imagesSequencer.textureInitialized = true;
-//        onLoadSuccess();
+    public void assetLoadSuccess(List<Texture2D> asset)
+    {
+        //        Debug.Log("Asset Load Successfull" + questionData.questionAsset.assetUrl);
+        //        int gifFrameSize =  asset.Count;
+        //        this.imagesSequencer.textures = new Texture[gifFrameSize];  
+        //        for(int i=0; i< asset.Count; i++)
+        //        {  
+        //            this.imagesSequencer.textures[i] = (Texture)asset[i];
+        //        }
+        //        SetQuestionImage(null);
+        //        this.imagesSequencer.FPS = questionData.questionAsset.fps;
+        //        this.imagesSequencer.textureInitialized = true;
+        //        onLoadSuccess();
     }
 
-    public void assetLoadFailed() {
+    public void assetLoadFailed()
+    {
         Debug.LogError("Asset Load Failed" + questionData.questionAsset.assetUrl);
         onLoadFailed();
     }
 
-    private void SetQuestionImage(Texture t) {
+    private void SetQuestionImage(Texture t)
+    {
         SetImageEffect(t);
     }
 
 
 
-
-    #if uncommented_old_imp
+#if uncommented_old_imp
     #region commented
        
     public IEnumerator CoroutineLoadSpriteFromUrl() {
@@ -187,5 +192,5 @@ public class QSpriteGifFramerBackup : QTextureFramer,IAssetLoadCallback<List<Tex
 //        e.ReloadEffect();
 //    }
     #endregion
-    #endif
+#endif
 }

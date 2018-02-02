@@ -109,7 +109,7 @@ public class UI3DCallOut : MonoBehaviour
 
 	public void SetText(string text) {
 		if (callout == null) {
-			callout = gameObject.transform.FindChild("CallOut");
+			callout = gameObject.transform.Find("CallOut");
 			if(callout==null)
 				callout = Util.SearchHierarchyForBone(transform,"CallOut");
 		}

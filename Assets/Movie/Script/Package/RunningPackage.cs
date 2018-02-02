@@ -69,11 +69,11 @@ public class RunningPackage : MonoBehaviour, IQuestionAnsweredCallback
         QuestionAnswerManager.GetInstance().ShowNextPackageQuestion(activeQuestionId);
     }
 
-    public void OnCorrectAnswer(){
+	public void OnCorrectAnswer(QuestionModel q){
         OnAnswering();
     }
 
-    public void OnWrongAnswer(){
+	public void OnWrongAnswer(QuestionModel q){
         OnAnswering();
     }
 

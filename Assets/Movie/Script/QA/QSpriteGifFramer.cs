@@ -6,21 +6,28 @@ using System;
 using SgUnity;
 
 [RequireComponent(typeof(AnimateTiledTexture))]
-public class QSpriteGifFramer : QTextureFramer,IAssetLoadCallback<Texture2D> {
+public class QSpriteGifFramer : QTextureFramer, IAssetLoadCallback<Texture2D>
+{
 
     private AnimateTiledTexture spriteSequencer;
 
-    override public void Awake ()  
-    {  
-        spriteSequencer =  gameObject.GetComponent<AnimateTiledTexture>();
-    }  
-
-    override protected void SetQuestionAsset() {
-        spriteSequencer.gameObject.SetActive(true);
-        QAssetDownloadManager.GetInstance().SetQuestionGifSprite(questionData.questionAsset,this);
+    override public void Awake()
+    {
+        spriteSequencer = gameObject.GetComponent<AnimateTiledTexture>();
+        if (spriteSequencer == null)
+        {
+            spriteSequencer = gameObject.AddComponent<AnimateTiledTexture>();
+        }
     }
 
-    public void assetLoadSuccess(Texture2D asset) {
+    override protected void SetQuestionAsset()
+    {
+        spriteSequencer.gameObject.SetActive(true);
+        QAssetDownloadManager.GetInstance().SetQuestionGifSprite(questionData.questionAsset, this);
+    }
+
+    public void assetLoadSuccess(Texture2D asset)
+    {
         Debug.Log("Asset Load Successfull" + questionData.questionAsset.assetUrl);
         SetQuestionImage(asset);
         this.spriteSequencer._columns = questionData.questionAsset.gifSpriteColumn;
@@ -30,12 +37,21 @@ public class QSpriteGifFramer : QTextureFramer,IAssetLoadCallback<Texture2D> {
         onLoadSuccess();
     }
 
-    public void assetLoadFailed() {
+    public void assetLoadFailed()
+    {
         Debug.LogError("Asset Load Failed" + questionData.questionAsset.assetUrl);
         onLoadFailed();
     }
 
-    private void SetQuestionImage(Texture t) {
+    private void SetQuestionImage(Texture t)
+    {
         SetImageEffect(t);
+    }
+
+    override protected void ResetOldFrame()
+    {
+        base.ResetOldFrame();
+        if (spriteSequencer != null)
+            this.spriteSequencer.gameObject.SetActive(false);
     }
 }

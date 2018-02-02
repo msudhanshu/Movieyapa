@@ -299,3 +299,17 @@ correct:
 Bug:
 server side:
 if error comes in userpackagemodel or usercurrency,, then for next/further users also they comes as blank;
+
+
+
+Improvement:
+FPS minimize only what is required
+implment dirty.. etc
+try to reduce battery drain and device heat up..
+
+
+
+//json
+https://thaiunitydev.weebly.com/36103607358836233634361736263635362736193633361036093633358536143633360236093634364835853617/-firebase-unity-3d
+https://unitygem.wordpress.com/json-serializer-attributes-reflection/
+https://stackoverflow.com/questions/36239705/serialize-and-deserialize-json-and-json-array-in-unity

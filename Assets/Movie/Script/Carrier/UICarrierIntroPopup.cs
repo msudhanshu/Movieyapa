@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UICarrierIntroPopup: UIGamePopUp {
    
     /**
-     * Set up the building with the given building.
+     * Level To play now...... and cost to play this level should be passed here.
      */
     public void Initialise() {
 

@@ -11,6 +11,7 @@ public interface ICapitalItem {
 	string getCamelName();
 	string getImageIconName();
 	CapitalType getCapitalType();
+	bool isGlobalCurrency();
 }
 
 public enum CapitalType{

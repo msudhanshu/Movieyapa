@@ -12,9 +12,9 @@ public class MusicEffect : Effect {
 	}
 
     override public void ReloadEffect<T>(T asset) {
+		base.ReloadEffect(asset);
         audioClip = asset as AudioClip;
         ReloadEffect();
-        base.ReloadEffect(asset);
     }
 	
 }

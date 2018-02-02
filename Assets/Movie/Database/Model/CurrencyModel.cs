@@ -16,11 +16,12 @@ public class CurrencyModel : BaseDbModel, ICapitalCurrency
     public string id {get; set;}
     public string name{get; set;}
     public string description{get; set;}
-
+	public bool isGameCurrency { get; set; }
     public static string CURRENCY_LEVEL = "level";
     public static string CURRENCY_TICKET = "ticket";
     public static string CURRENCY_HINT = "hint";
     public static string CURRENCY_GOLD = "gold";
+	public static string CURRENCY_SILVER = "silver";
     public static string CURRENCY_XP = "xp";
 
 //    public static string RESOURCE_XP = "xp";
@@ -37,10 +38,11 @@ public class CurrencyModel : BaseDbModel, ICapitalCurrency
 
     }
 
-    public CurrencyModel(string id, string name, string description) {
+	public CurrencyModel(string id, string name, string description, bool isGameCurrency) {
         this.id = id;
         this.name = name;
         this.description = description;
+		this.isGameCurrency = isGameCurrency;
     }
 
     #region ICapitalItem implementation
@@ -84,11 +86,16 @@ public class CurrencyModel : BaseDbModel, ICapitalCurrency
         return Config.AddSuffix(getId() , Config.RESOURCE_DOOBER_IMAGENAME_SUFFIX);
     }
 
+	public bool isGlobalCurrency() {
+		return this.isGameCurrency;
+	}
+
     #endregion
 
     public static CurrencyModel GetCurrencyModel(String id) {
         //TODO DANGER
-        return KiwiCommonDatabase.DataHandler.wrapper.currencies.Find(x => x.id==id);
+        //return KiwiCommonDatabase.DataHandler.wrapper.currencies.Find(x => x.id==id);
+		return currencies.Find(x => x.id==id);
     }
  
     public static  Dictionary<ICapitalCurrency,int> ParseCurrency(String cur) {
@@ -107,13 +114,24 @@ public class CurrencyModel : BaseDbModel, ICapitalCurrency
         return curmap;
     }
 
+	private static List<CurrencyModel> _currencies;
+	public static List<CurrencyModel> currencies {
+		get {
+			if (_currencies == null) {
+				_currencies = InitSelfNonDiffMarketTable ();
+			}
+			return _currencies;
+		}
+	}
+
     public static List<CurrencyModel> InitSelfNonDiffMarketTable() {
         List<CurrencyModel> list = new List<CurrencyModel>();
-        list.Add(new CurrencyModel("gold","Gold","Gold"));
-        list.Add(new CurrencyModel("hint","Hint","Hint"));
-        list.Add(new CurrencyModel("ticket","Ticket","Ticket"));
-        list.Add(new CurrencyModel("level","Level","Level"));
-        list.Add(new CurrencyModel("xp","XP","XP"));
+        list.Add(new CurrencyModel("gold","Gold","Gold",true));
+        list.Add(new CurrencyModel("hint","Hint","Hint",false));
+		list.Add(new CurrencyModel("ticket","Ticket","Ticket",false));
+		list.Add(new CurrencyModel("level","Level","Level",false));
+		list.Add(new CurrencyModel("silver","Silver","Silver",false));
+		list.Add(new CurrencyModel("xp","XP","XP",false));
         return list;
     }
 
